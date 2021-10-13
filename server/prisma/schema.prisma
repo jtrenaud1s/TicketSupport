@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  // postgresql, mysql, sqlite, sqlserver (preview) or mongodb (preview)
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Once setup here, run prisma db pull to generate the schema from the existing database
+// Then run prisma generate to generate the code that handles all the db queries and operations
+
+
+// User model
+
+model User {
+  id Int @default(autoincrement()) @id
+  email String @unique
+  username String @unique
+  departmentId Int
+  department Department @relation(fields: [departmentId], references: [id])
+  tickets Ticket[]
+}
+
+model Department {
+  id Int @default(autoincrement()) @id
+  name String
+  users User[]
+}
+
+model Ticket {
+  id Int @default(autoincrement()) @id
+  creatorId Int
+  creator User @relation(fields: [creatorId], references: [id])
+  subject String
+  content String
+  attachments Attachment[]
+}
+
+model Attachment {
+  id Int @default(autoincrement()) @id
+  ticketId Int
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+  fileLocation String
+}
