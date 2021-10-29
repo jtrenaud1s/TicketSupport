@@ -1,9 +1,8 @@
 import React from "react";
-import IPageProps from "../../interfaces/IPageProps";
-import LoginBox from "../../components/Login";
 import CenterContainer from "../../components/CenterContainer";
+import LoginBox from "../../components/LoginBox";
 
-const LoginPage: React.FunctionComponent<IPageProps> = (props) => {
+const LoginPage = () => {
   return (
     <CenterContainer>
       <LoginBox />
