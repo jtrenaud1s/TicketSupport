@@ -1,73 +1,53 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Ticket Support System Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Nest.js Backend
+No Database Selected
+Prisma ORM
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+✔ Your Prisma schema was created at prisma/schema.prisma. You can now open it in your favorite editor.
 
-## Description
+warn You already have a .gitignore. Don't forget to exclude .env to not commit any secret.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Next steps:
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver (Preview) or mongodb (Preview).
+3. Run prisma db pull to turn your database schema into a Prisma schema.
+4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
 
-## Installation
+More information in our documentation:
+https://pris.ly/d/getting-started
 
-```bash
-$ npm install
-```
+### Main Ticket Page
 
-## Running the app
+![Main Ticket Page](../images/061c6292da800237a8b26d188e9c1512a7fc5c2a0c63dcede574ecd660d3ea29.png)  
 
-```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
+### Department Listing Page
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
+![Department Listing](../images/883088c6feb303a40e53e7609b7cb19fad43fbc6fd2516c303cef53765ddc847.png)  
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+### User Listing Page
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
+![User Listing](../images/70cc404f841a8ced8075dd34f421cb007f71815ae8e00696013d3c9557d6052d.png)  
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+### Ticket Detail Page
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
+![Ticket Detail](../images/4489bd67041c566ad9df630c77b5cdc6d225b71236ae612490e8dc4b387afb58.png)  
 
-Nest is [MIT licensed](LICENSE).
+
+# Ticket Detail Page Version 2
+
+
+![Ticket Detail 2](../images/993a3695fecff7bf69364294861057e68b381f6f5b84ce56501db5f37a0e8e97.png)  
+
+
+### User Profile Page
+
+
+![User Profile](../images/0fc3e4a514f567eddcb940be497d9e7d0b2e9f4167e0cb1f09d903f3056c88b4.png)  
+
