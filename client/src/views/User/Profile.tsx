@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Col, Form, Row, Tab, Tabs } from "react-bootstrap";
-import Loadscreen from "../components/Loadscreen";
-import ChangePassword from "../components/PasswordChanger";
-import { placeholder } from "../interfaces/IUser";
-import Layout from "../layout/Layout";
+import Loadscreen from "../../components/Loadscreen";
+import ChangePassword from "../../components/PasswordChanger";
+import { placeholder } from "../../interfaces/IUser";
+import Layout from "../../layout/Layout";
 
 const ProfilePage = () => {
 
