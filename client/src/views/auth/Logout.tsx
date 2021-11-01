@@ -18,15 +18,8 @@ const LogoutPage = () => {
         <h1>Logout</h1>
         <hr className="w-25"/>
         <p>Are you sure you want to logout?</p>
-        <Button className="w-100 mb-2" onClick={() => Logout()}>
-          Logout
-        </Button>
-        <Button
-          className="w-100"
-          variant="default"
-          onClick={() => history.goBack()}>
-          Cancel
-        </Button>
+        <Button className="w-100 mb-2" onClick={() => Logout()}>Logout</Button>
+        <Button className="w-100" variant="default" onClick={() => history.goBack()}>Cancel</Button>
       </Card>
     </CenterContainer>
     </Layout>

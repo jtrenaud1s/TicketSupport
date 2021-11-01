@@ -34,50 +34,30 @@ const ChangePassword: React.FC<IProps> = (props) => {
           <Col sm={12} md={6} lg={3}>
             <Form.Group className="mb-2">
               <Form.Label>Current Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="oldPassword"
-                id="oldPassword"
-                onChange={(event) => setOld(event.target.value)}
-                value={old}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={12} md={6} lg={3}>
-            <Form.Group className="mb-2">
-              <Form.Label>New Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                id="password"
-                onChange={(event) => setPassword(event.target.value)}
-                value={password}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={12} md={6} lg={3}>
-            <Form.Group className="mb-4">
-              <Form.Label>Confirm New Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="confirm"
-                id="confirm"
-                onChange={(event) => setConfirm(event.target.value)}
-                value={confirm}
-              />
+              <Form.Control type="password" name="oldPassword" id="oldPassword" onChange={(event) => setOld(event.target.value)} value={old} />
             </Form.Group>
           </Col>
         </Row>
 
-        <Button
-          disabled={changing}
-          onClick={() => passwordChangeRequest()}>
-          Change Password
-        </Button>
+        <Row>
+          <Col sm={12} md={6} lg={3}>
+            <Form.Group className="mb-2">
+              <Form.Label>New Password</Form.Label>
+              <Form.Control type="password" name="password" id="password" onChange={(event) => setPassword(event.target.value)} value={password} />
+            </Form.Group>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col sm={12} md={6} lg={3}>
+            <Form.Group className="mb-4">
+              <Form.Label>Confirm New Password</Form.Label>
+              <Form.Control type="password" name="confirm" id="confirm" onChange={(event) => setConfirm(event.target.value)} value={confirm} />
+            </Form.Group>
+          </Col>
+        </Row>
+        
+        <Button disabled={changing} onClick={() => passwordChangeRequest()}>Change Password</Button>
       </Form>
       <span>{error}</span>
     </div>

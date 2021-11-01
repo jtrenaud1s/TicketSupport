@@ -10,31 +10,19 @@ const SideNav = () => {
     >
       <div className="position-sticky pt-3">
         <Nav className="flex-column">
-          <Nav.Link
-            exact
-            aria-current="page"
-            as={NavLink}
-            to="/"
-            activeClassName="active"
-          >
-            Dashboard
-          </Nav.Link>
+          <Nav.Link exact aria-current="page" as={NavLink} to="/" activeClassName="active">Dashboard</Nav.Link>
         </Nav>
+
         <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Administration</span>
         </h6>
+
         <Nav className="nav flex-column mb-2">
           <NavDropdown id="management" title="User Management">
-            <NavDropdown.Item
-              aria-current="page"
-              as={NavLink}
-              to="/users"
-              activeClassName="active"
-            >
-              Users
-            </NavDropdown.Item>
+            <NavDropdown.Item aria-current="page" as={NavLink} to="/users" activeClassName="active">Users</NavDropdown.Item>
           </NavDropdown>
         </Nav>
+        
       </div>
     </Navbar.Collapse>
   );

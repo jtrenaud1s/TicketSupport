@@ -21,9 +21,7 @@ const Profile: React.FC<IProps> = ({ user, size = "64px" }: IProps) => {
         width={size}
         height={size}
       /> */}
-      <div className="fw-bold">
-        {`${user.firstName} ${user.lastName}`}
-      </div>
+      <div className="fw-bold">{`${user.firstName} ${user.lastName}`}</div>
       <small>{role}</small>
     </div>
   );

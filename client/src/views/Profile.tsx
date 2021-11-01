@@ -20,39 +20,30 @@ const ProfilePage = () => {
           <h3>My Profile</h3>
           <Form>
             <Row>
+
               <Col sm={12} md={2}>
                 <Form.Group>
                   <Form.Label>First Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Phil"
-                    value={firstName}
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                    }}
-                  />
+                  <Form.Control type="text" placeholder="Phil" value={firstName} onChange={(e) => {setFirstName(e.target.value);}} />
                 </Form.Group>
               </Col>
+
               <Col sm={12} md={2}>
                 <Form.Group>
                   <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Born"
-                    value={lastName}
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                    }}
-                  />
+                  <Form.Control type="text" placeholder="Born" value={lastName} onChange={(e) => { setLastName(e.target.value); }} />
                 </Form.Group>
               </Col>
+
               <Col sm={12} md={6}>
                 <Form.Group>
                   <Form.Label>Profile Picture</Form.Label>
                   <p>Not Implemented</p>
                 </Form.Group>
               </Col>
+              
             </Row>
+
           </Form>
         </Tab>
         <Tab eventKey="contact" title="Contact Info"></Tab>
