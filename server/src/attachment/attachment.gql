@@ -1,0 +1,22 @@
+type Attachment {
+    id: ID!
+    ticket: Ticket!
+    fileLocation: String!
+}
+
+input CreateAttachment {
+    ticket: Ticket!
+    fileLocation: String!
+}
+
+type Query {
+    attachments: [Attachment!]!
+    attachments(ticket: Ticket!): [Attachment!]!
+    attachments(user: User!): [Attachment!]!
+    attachment(id: ID!): Attachment!
+}
+
+type Mutation {
+    createAttachment(input: CreateAttachment): Attachment!
+    deleteAttachment(id: ID!): Attachment
+}

@@ -1,0 +1,32 @@
+type Ticket {
+    id: ID!
+    creator: User!
+    subject: String!
+    content: String!
+    attachments: [Attachment!]!
+}
+
+input CreateTicket {
+    creator: User!
+    subject: String!
+    content: String!
+    attachments: [Attachment!]!
+}
+
+input UpdateTicket {
+    subject: String
+    content: String
+    attachments: [Attachment!]!
+}
+
+type Query {
+    tickets: [Ticket!]!
+    tickets(user: User!): [Ticket!]!
+    ticket(id: ID!): Ticket
+}
+
+type Mutation {
+    createTicket(input: CreateTicket): Ticket!
+    updateTicket(input: UpdateTicket): Ticket
+    deleteTicket(id: ID!): Ticket
+}
