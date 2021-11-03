@@ -1,7 +1,7 @@
 type User {
     id: ID!
-    email: String! @unique
-    username: String! @unique
+    email: String!
+    username: String!
     password: String!
     department: Department!
     tickets: [Ticket!]!
@@ -17,7 +17,7 @@ input CreateUser {
 input UpdateUser {
     id: ID!
     password: String
-    department: Department
+    department: Department!
 }
 
 type Query {

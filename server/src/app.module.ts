@@ -12,9 +12,10 @@ import { PrismaService } from './prisma/prisma.service';
     GraphQLModule.forRoot({
       typePaths: ['./**/*.gql'],
       definitions: {
-        path: join(process.cwd(), 'src/graphql.ts'),
+        path: join(process.cwd(), 'graphql.ts'),
         outputAs: 'class',
       },
+      playground: true
     }),
   ],
   controllers: [AppController],

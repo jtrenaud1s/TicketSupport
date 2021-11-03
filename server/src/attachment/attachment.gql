@@ -11,8 +11,8 @@ input CreateAttachment {
 
 type Query {
     attachments: [Attachment!]!
-    attachments(ticket: Ticket!): [Attachment!]!
-    attachments(user: User!): [Attachment!]!
+    attachmentsByTicket(ticket: Ticket!): [Attachment!]!
+    attachmentsByUser(user: User!): [Attachment!]!
     attachment(id: ID!): Attachment!
 }
 
