@@ -1,6 +1,6 @@
 import { Prisma, Ticket } from '.prisma/client';
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 
 // Define query parameters that are made available to search for multiple tickets

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { PrismaModule } from '../prisma/prisma.module';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
@@ -9,6 +10,7 @@ describe('UserController', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
       providers: [UserService],
+      imports: [PrismaModule]
     }).compile();
 
     controller = module.get<UserController>(UserController);
