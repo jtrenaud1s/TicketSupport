@@ -11,9 +11,9 @@ interface FindManyUsersParams {
 }
 
 interface UpdateUserParams {
-    where: Prisma.UserWhereUniqueInput;
-    data: Prisma.UserUpdateInput;
-  }
+  where: Prisma.UserWhereUniqueInput;
+  data: Prisma.UserUpdateInput;
+}
 
 @Injectable()
 export class UserService {

@@ -11,6 +11,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
 // Once setup here, run prisma db pull to generate the schema from the existing database
 // Then run prisma generate to generate the code that handles all the db queries and operations
 
