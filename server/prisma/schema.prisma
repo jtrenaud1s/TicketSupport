@@ -11,9 +11,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator dbml {
-  provider = "prisma-dbml-generator"
-}
+// generator dbml {
+//   provider = "prisma-dbml-generator"
+// }
 
 // Once setup here, run prisma db pull to generate the schema from the existing database
 // Then run prisma generate to generate the code that handles all the db queries and operations
@@ -23,17 +23,11 @@ generator dbml {
 
 model User {
   id Int @default(autoincrement()) @id
+  firstName String
+  lastName String
   email String @unique
-  username String @unique
-  departmentId Int
-  department Department @relation(fields: [departmentId], references: [id])
+  password String
   tickets Ticket[]
-}
-
-model Department {
-  id Int @default(autoincrement()) @id
-  name String
-  users User[]
 }
 
 model Ticket {
@@ -42,12 +36,6 @@ model Ticket {
   creator User @relation(fields: [creatorId], references: [id])
   subject String
   content String
-  attachments Attachment[]
-}
-
-model Attachment {
-  id Int @default(autoincrement()) @id
-  ticketId Int
-  ticket Ticket @relation(fields: [ticketId], references: [id])
-  fileLocation String
+  createdDate DateTime @default(now())
+  updatedDate DateTime
 }

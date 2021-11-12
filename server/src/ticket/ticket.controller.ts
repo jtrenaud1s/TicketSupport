@@ -1,26 +1,55 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TicketService } from './ticket.service';
-import { Ticket as TicketModel } from '@prisma/client';
+import { Prisma, Ticket } from '@prisma/client';
 
 @Controller('ticket')
 export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
 
-  @Get('ticket/:id')
-  async getTicketById(@Param('id') id: string): Promise<TicketModel> {
-    return this.ticketService.ticket({ id: Number(id) });
+  @Post()
+  create(@Body() createTicketDto: Prisma.TicketCreateInput) {
+    return this.ticketService.create(createTicketDto);
   }
 
-  @Get('ticket')
-  async getTickets(): Promise<TicketModel[]> {
-    return this.ticketService.tickets({});
+  @Get()
+  findAll() {
+    return this.ticketService.findAll();
   }
 
-  @Get('filtered-tickets/:searchString')
-  async getFilteredPosts(
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.ticketService.findOne({ id: +id });
+  }
+
+  @Patch(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateTicketDto: Prisma.TicketUpdateInput,
+  ) {
+    return this.ticketService.update({
+      where: { id: +id },
+      data: updateTicketDto,
+    });
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.ticketService.remove({ id: +id });
+  }
+
+  @Get('search/:searchString')
+  async search(
     @Param('searchString') searchString: string,
-  ): Promise<TicketModel[]> {
-    return this.ticketService.tickets({
+  ): Promise<Ticket[]> {
+    return this.ticketService.findMany({
       where: {
         OR: [
           {
@@ -32,32 +61,5 @@ export class TicketController {
         ],
       },
     });
-  }
-
-  @Post('ticket/new')
-  async createDraft(
-    @Body() ticketData: { subject: string; content?: string; authorId: number },
-  ): Promise<TicketModel> {
-    const { subject, content, authorId } = ticketData;
-    return this.ticketService.createTicket({
-      subject,
-      content,
-      creator: {
-        connect: { id: authorId },
-      },
-    });
-  }
-
-  // @Put('ticket/:id/status/:state')
-  // async publishPost(@Param('id') id: string, state: string): Promise<TicketModel> {
-  //   return this.ticketService.updateTicket({
-  //     where: { id: Number(id) },
-  //     data: { state: state },
-  //   });
-  // }
-
-  @Delete('ticket/:id')
-  async deleteTicket(@Param('id') id: string): Promise<TicketModel> {
-    return this.ticketService.deleteTicket({ id: Number(id) });
   }
 }

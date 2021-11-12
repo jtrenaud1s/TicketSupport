@@ -1,7 +1,6 @@
-import { Prisma, Ticket } from '.prisma/client';
 import { Injectable } from '@nestjs/common';
+import { Prisma, Ticket } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-
 
 // Define query parameters that are made available to search for multiple tickets
 interface FindManyTicketsParams {
@@ -18,20 +17,25 @@ interface UpdateTicketParams {
   data: Prisma.TicketUpdateInput;
 }
 
-// create the ticket service
 @Injectable()
 export class TicketService {
   constructor(private prisma: PrismaService) {}
 
-  // get one ticket
-  public async ticket(
-    userWhereUniqueInput: Prisma.TicketWhereUniqueInput,
-  ): Promise<Ticket | null> {
-    return this.prisma.ticket.findUnique({ where: userWhereUniqueInput });
+  async create(data: Prisma.TicketCreateInput): Promise<Ticket> {
+    return this.prisma.ticket.create({
+      data,
+    });
   }
 
-  // get multiple tickets
-  public async tickets(params: FindManyTicketsParams): Promise<Ticket[]> {
+  async findAll(): Promise<Ticket[]> {
+    return this.findMany(undefined);
+  }
+
+  async findOne(ticketWhereUniqueInput: Prisma.TicketWhereUniqueInput): Promise<Ticket | null> {
+    return this.prisma.ticket.findUnique({ where: ticketWhereUniqueInput });
+  }
+
+  async findMany(params: FindManyTicketsParams): Promise<Ticket[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.ticket.findMany({
       skip,
@@ -42,13 +46,7 @@ export class TicketService {
     });
   }
 
-  public async createTicket(data: Prisma.TicketCreateInput): Promise<Ticket> {
-    return this.prisma.ticket.create({
-      data,
-    });
-  }
-
-  public async updateTicket(params: UpdateTicketParams): Promise<Ticket> {
+  async update(params: UpdateTicketParams): Promise<Ticket> {
     const { where, data } = params;
     return this.prisma.ticket.update({
       data,
@@ -56,7 +54,7 @@ export class TicketService {
     });
   }
 
-  public async deleteTicket(where: Prisma.TicketWhereUniqueInput): Promise<Ticket> {
+  async remove(where: Prisma.TicketWhereUniqueInput): Promise<Ticket> {
     return this.prisma.ticket.delete({
       where,
     });
