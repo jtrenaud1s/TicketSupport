@@ -3,6 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
+//https://github.com/jmcdo29/testing-nestjs/tree/master/apps/prisma-sample
+
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
