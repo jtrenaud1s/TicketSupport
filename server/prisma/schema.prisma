@@ -28,6 +28,8 @@ model User {
   email String @unique
   password String
   tickets Ticket[]
+  createdDate DateTime @default(now())
+  updatedDate DateTime @default(now())
 }
 
 model Ticket {
@@ -37,5 +39,5 @@ model Ticket {
   subject String
   content String
   createdDate DateTime @default(now())
-  updatedDate DateTime
+  updatedDate DateTime @default(now())
 }

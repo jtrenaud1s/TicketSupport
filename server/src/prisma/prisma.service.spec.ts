@@ -15,4 +15,12 @@ describe('PrismaService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should have a user entity', () => {
+    expect(service.user).toBeDefined()
+  })
+
+  it('should have a ticket entity', () => {
+    expect(service.ticket).toBeDefined()
+  })
 });
