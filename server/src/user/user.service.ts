@@ -26,7 +26,7 @@ export class UserService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.findMany(undefined);
+    return this.prisma.user.findMany(undefined);
   }
 
   async findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<User | null> {
