@@ -7,6 +7,6 @@ import { PrismaModule } from '../prisma/prisma.module';
   controllers: [TicketController],
   providers: [TicketService],
   imports: [PrismaModule],
-  exports: [TicketService]
+  exports: [TicketService],
 })
 export class TicketModule {}

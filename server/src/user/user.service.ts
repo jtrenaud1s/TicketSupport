@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 
-interface FindManyUsersParams {
+export interface FindManyUsersParams {
   skip?: number;
   take?: number;
   cursor?: Prisma.UserWhereUniqueInput;
@@ -10,7 +10,7 @@ interface FindManyUsersParams {
   orderBy?: Prisma.UserOrderByWithRelationInput;
 }
 
-interface UpdateUserParams {
+export interface UpdateUserParams {
   where: Prisma.UserWhereUniqueInput;
   data: Prisma.UserUpdateInput;
 }
@@ -25,23 +25,20 @@ export class UserService {
     });
   }
 
-  async findAll(): Promise<User[]> {
-    return this.prisma.user.findMany(undefined);
-  }
-
-  async findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<User | null> {
+  async findOne(
+    userWhereUniqueInput: Prisma.UserWhereUniqueInput,
+  ): Promise<User | null> {
     return this.prisma.user.findUnique({ where: userWhereUniqueInput });
   }
 
-  async findMany(params: FindManyUsersParams): Promise<User[]> {
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.user.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-    });
+  async findAll(): Promise<User[]> {
+    return this.findMany({});
+  }
+
+  async findMany(
+    params: FindManyUsersParams | undefined = undefined,
+  ): Promise<User[]> {
+    return this.prisma.user.findMany(params);
   }
 
   async update(params: UpdateUserParams): Promise<User> {

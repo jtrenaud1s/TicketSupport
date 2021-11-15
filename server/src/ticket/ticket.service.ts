@@ -28,22 +28,17 @@ export class TicketService {
   }
 
   async findAll(): Promise<Ticket[]> {
-    return this.findMany(undefined);
+    return this.findMany({});
   }
 
-  async findOne(ticketWhereUniqueInput: Prisma.TicketWhereUniqueInput): Promise<Ticket | null> {
+  async findOne(
+    ticketWhereUniqueInput: Prisma.TicketWhereUniqueInput,
+  ): Promise<Ticket | null> {
     return this.prisma.ticket.findUnique({ where: ticketWhereUniqueInput });
   }
 
   async findMany(params: FindManyTicketsParams): Promise<Ticket[]> {
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.ticket.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-    });
+    return this.prisma.ticket.findMany(params);
   }
 
   async update(params: UpdateTicketParams): Promise<Ticket> {
@@ -59,6 +54,4 @@ export class TicketService {
       where,
     });
   }
-
-  
 }

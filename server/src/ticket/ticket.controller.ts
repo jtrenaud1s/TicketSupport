@@ -10,6 +10,13 @@ import {
 import { TicketService } from './ticket.service';
 import { Prisma, Ticket } from '@prisma/client';
 
+//create
+//findAll
+// findOne
+//update
+//remove
+//search
+
 @Controller('ticket')
 export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
@@ -46,9 +53,7 @@ export class TicketController {
   }
 
   @Get('search/:searchString')
-  async search(
-    @Param('searchString') searchString: string,
-  ): Promise<Ticket[]> {
+  async search(@Param('searchString') searchString: string): Promise<Ticket[]> {
     return this.ticketService.findMany({
       where: {
         OR: [
