@@ -51,7 +51,7 @@ describe('TicketController', () => {
       await expect(controller.findOne('1')).resolves.toEqual(singleTicket);
     });
   });
-
+  // test
   // describe('findMany', () => {
   //   it('should find all Tickets with the last name "Doe"', async () => {
   //     mockPrismacontroller.ticket.findMany.mockImplementation(() => manyTickets);
