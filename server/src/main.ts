@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // Tells prisma to use shutdown hooks instead of exiting before the hooks can be called
   const prismaService: PrismaService = app.get(PrismaService);
-  prismaService.enableShutdownHooks(app)
+  prismaService.enableShutdownHooks(app);
 
   // Start the API server on port 3000
   await app.listen(3000);
