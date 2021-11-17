@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 import Box from "./Box";
 
 const SignUpBox = () => {
@@ -10,11 +11,13 @@ const SignUpBox = () => {
   const [confirm, setConfirm] = useState("initialState");
   const [error, setError] = useState("initialState");
 
+  const authContext = useContext(AuthContext)
+
   const signUpWithEmailAndPassword = () => {
     if (error !== "") setError("");
-    
+    setRegistering(true)
+    authContext.register(email, password)
     setRegistering(false);
-
   };
 
   return (
