@@ -21,20 +21,24 @@ export class AuthService {
   }
 
   async login(user: any) {
+    console.log("Service Layer Login")
     const payload = { email: user.email, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
+      user: user
     };
   }
 
   async register(user: Prisma.UserCreateInput) {
-    const hashed = await hash(user.password, 21);
+    console.log("Service Layer Register")
+    const hashed = await hash(user.password, 6);
+    console.log("hash complete")
     const t = {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
       password: hashed,
     };
-    this.userService.create(t);
+    return this.userService.create(t);
   }
 }

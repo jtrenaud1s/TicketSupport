@@ -1,48 +1,64 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
+import { Redirect, useHistory } from "react-router";
+
+import {
+  IRegisterInput,
+  ILoginInput,
+  User,
+  UserJWTPayload,
+} from "../types/InputTypes";
+
+import jwt_decode from "jwt-decode";
 
 interface IAuthContext {
-  register: (email: string, password: string) => void
-  login: (email: string, password: string) => void;
+  currentUser: User | null;
+  credential: string;
+
+  register: (user: IRegisterInput) => void;
+  login: (user: ILoginInput) => void;
   logout: () => void;
-  currentUser: any;
-  isLoggedIn: () => void;
+  isLoggedIn: () => boolean;
 }
 
 const AuthContext = createContext({} as IAuthContext);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [credential, setCredential] = useState("");
+  const history = useHistory();
 
-  const register = (email: string, password: string) => {
+  const register = async (user: IRegisterInput) => {
     console.log("Attempting to register new account");
-    axios.post("http://localhost:5000/auth/register", {
-      firstName: "NoName",
-      lastName: "NoName",
-      email: email,
-      password: password,
-    });
+    const res = await axios.post("http://localhost:5000/auth/register", user);
+    console.log(res);
+    console.log(res.data);
+    history.push("/login");
   };
 
-  const login = (email: string, password: string) => {
+  const login = async (credentials: ILoginInput) => {
     console.log("Attempting login");
-    axios
-      .post("http://localhost:5000/auth/login", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        setCurrentUser(res.data);
-      });
+    let response = await axios.post(
+      "http://localhost:5000/auth/login",
+      credentials
+    );
+
+    const access_token = response.data.access_token;
+    setCredential(access_token);
+
+    const dec: UserJWTPayload = jwt_decode(access_token);
+
+    response = await axios.get("http://localhost:5000/user/" + dec.sub);
+    setCurrentUser(response.data as User);
   };
 
   const logout = () => {
-    setCurrentUser(null);
+    setCredential("");
   };
 
-  const isLoggedIn = () => currentUser != null;
+  const isLoggedIn = () => credential != "";
 
-  const value = { register, login, logout, currentUser, isLoggedIn };
+  const value = { credential, currentUser, register, login, logout, isLoggedIn };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

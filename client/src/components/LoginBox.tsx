@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 import Box from "./Box";
 
@@ -9,6 +9,8 @@ const LoginBox: React.FC = (props) => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const authContext = useContext(AuthContext);
+
+  if (authContext.isLoggedIn()) return <Redirect to="/" />
 
   return (
     <div className="d-flex flex-column w-25">
@@ -45,7 +47,7 @@ const LoginBox: React.FC = (props) => {
           variant="primary"
           className="form-control"
           disabled={false}
-          onClick={(r) => authContext.login(email, password)}
+          onClick={(r) => authContext.login({email, password})}
         >
           Login
         </Button>

@@ -10,9 +10,9 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
   return (
     <AuthProvider>
       <Switch>
-        <Route path="/" exact={true} render={HomePage} />
-        <Route path="/login" exact={true} render={LoginPage} />
-        <Route path="/register" exact={true} render={RegisterPage} />
+        <Route path="/" exact={true} component={HomePage} />
+        <Route path="/login" exact={true} component={LoginPage} />
+        <Route path="/register" exact={true} component={RegisterPage} />
       </Switch>
     </AuthProvider>
   );
