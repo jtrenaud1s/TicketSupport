@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 
 import {
   IRegisterInput,
@@ -29,24 +29,19 @@ export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
 
   const register = async (user: IRegisterInput) => {
-    console.log("Attempting to register new account");
     const res = await axios.post("http://localhost:5000/auth/register", user);
-    console.log(res);
-    console.log(res.data);
     history.push("/login");
   };
 
   const login = async (credentials: ILoginInput) => {
-    console.log("Attempting login");
     let response = await axios.post(
       "http://localhost:5000/auth/login",
       credentials
     );
 
-    const access_token = response.data.access_token;
-    setCredential(access_token);
+    setCredential(response.data.access_token);
 
-    const dec: UserJWTPayload = jwt_decode(access_token);
+    const dec: UserJWTPayload = jwt_decode(response.data.access_token);
 
     response = await axios.get("http://localhost:5000/user/" + dec.sub);
     setCurrentUser(response.data as User);
@@ -54,6 +49,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   const logout = () => {
     setCredential("");
+    setCurrentUser(null)
   };
 
   const isLoggedIn = () => credential != "";
