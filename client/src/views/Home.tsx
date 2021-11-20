@@ -5,10 +5,10 @@ import Layout from "../layout/Layout";
 
 const HomePage: React.FC = () => {
   const authContext = useContext(AuthContext)
+  console.log(authContext.isLoggedIn());
 
   if (!authContext.isLoggedIn()) return <Redirect to="/login" />
 
-  console.log(authContext.isLoggedIn())
   return (
     <Layout title="Dashboard">
       <p>Home Page</p>

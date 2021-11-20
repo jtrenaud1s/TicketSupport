@@ -7,7 +7,6 @@ import Box from "./Box";
 const LoginBox: React.FC = (props) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>("");
   const authContext = useContext(AuthContext);
 
   if (authContext.isLoggedIn()) return <Redirect to="/" />
@@ -15,7 +14,6 @@ const LoginBox: React.FC = (props) => {
   return (
     <div className="d-flex flex-column w-25">
       <Box title="Login">
-        <span>{error}</span>
 
         <Form.Group className="w-100">
           <Form.Label>Email</Form.Label>
