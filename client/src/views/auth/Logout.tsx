@@ -3,7 +3,6 @@ import { Button, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import CenterContainer from "../../components/CenterContainer";
 import AuthContext from "../../contexts/AuthContext";
-import Layout from "../../layout/Layout";
 
 const LogoutPage = () => {
   const history = useHistory();
